@@ -1,0 +1,33 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isAdmin() {
+      return request.auth != null
+        && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    // Public can read notices; only approved admin UIDs can create/update/delete.
+    match /notices/{noticeId} {
+      allow read: if true;
+      allow create: if isAdmin()
+        && request.resource.data.title is string
+        && request.resource.data.title.size() > 0
+        && request.resource.data.title.size() <= 100
+        && request.resource.data.body is string
+        && request.resource.data.body.size() <= 1500;
+      allow update: if isAdmin();
+      allow delete: if isAdmin();
+    }
+
+    // Admin allowlist is managed manually in Firebase Console only.
+    match /admins/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow write: if false;
+    }
+
+    // Deny access to all other documents unless rules are deliberately added.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

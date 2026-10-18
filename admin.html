@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102a56">
+  <title>Admin Console | Edutech Technology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="admin.js"></script>
+</head>
+<body class="admin-body">
+  <header class="admin-header"><div class="container admin-header-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">E<span>+</span></span><span class="brand-copy"><strong>EDUTECH</strong><small>TECHNOLOGY</small></span></a>
+    <a class="admin-back" href="index.html">← Back to website</a>
+  </div></header>
+  <main class="container admin-main">
+    <div class="admin-intro"><div class="eyebrow"><span class="eyebrow-line"></span> CONTENT MANAGEMENT</div>
+      <h1>Admin console.</h1><p>Sign in with an authorized Firebase account to publish and remove public notices. This starter admin does not manage student marks or result records.</p></div>
+    <div class="admin-layout">
+      <section class="admin-card" aria-labelledby="loginTitle">
+        <h2 id="loginTitle">Admin sign in</h2><p>Use the email and password created in your Firebase Authentication console.</p>
+        <form id="loginForm">
+          <div class="field"><label for="email">Admin email</label><input id="email" type="email" autocomplete="username" required placeholder="admin@example.com"></div>
+          <div class="field"><label for="password">Password</label><input id="password" type="password" autocomplete="current-password" required placeholder="Enter password"></div>
+          <button class="button button-dark button-full" type="submit">Sign in securely <span>→</span></button>
+        </form>
+        <button class="button button-outline button-full hidden" id="signOutButton" type="button" style="margin-top:12px">Sign out</button>
+        <div class="admin-message" id="authMessage" role="status">Firebase setup is required before sign-in will work.</div>
+        <div class="admin-warning">Security note: Firebase sign-in alone is not enough. Add the signed-in UID to the Firestore <code>admins</code> collection and deploy the included <code>firestore.rules</code> file before using this panel.</div>
+      </section>
+      <section class="admin-card" aria-labelledby="publishTitle">
+        <h2 id="publishTitle">Publish a notice</h2><p>Notices added here appear on the public homepage after Firestore is configured.</p>
+        <form id="noticeForm">
+          <div class="field"><label for="noticeTitle">Notice title</label><input id="noticeTitle" required maxlength="100" placeholder="e.g. Half-yearly datesheet released"></div>
+          <div class="field"><label for="category">Category</label><select id="category"><option>GENERAL</option><option>EXAM</option><option>ADMISSION</option><option>DATESHEET</option><option>RESOURCE</option></select></div>
+          <div class="field"><label for="noticeBody">Notice details</label><textarea id="noticeBody" required maxlength="1500" placeholder="Write clear, verified information..."></textarea></div>
+          <div class="field"><label for="noticeLink">Related link (optional)</label><input id="noticeLink" type="url" placeholder="https://..."></div>
+          <button class="button button-primary button-full" id="publishButton" type="submit" disabled>Publish notice <span>→</span></button>
+        </form>
+        <div class="admin-message" id="publishMessage" role="status">Sign in and configure Firebase to publish notices.</div>
+      </section>
+    </div>
+    <section class="admin-card" style="margin-top:22px">
+      <div class="admin-toolbar"><div><h2>Published notices</h2><p style="margin:5px 0 0">Remove outdated notices from the public homepage.</p></div><button class="button button-outline" id="refreshButton" type="button">Refresh list ↻</button></div>
+      <div id="adminNoticeList" class="admin-notice-list"><div class="admin-message">Sign in to view notices.</div></div>
+    </section>
+  </main>
+</body>
+</html>

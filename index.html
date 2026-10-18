@@ -1,248 +1,183 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>EduSetu Portal</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-
-body{
-  background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
-              url('https://images.unsplash.com/photo-1523580846011-d3a5bc25702b');
-  background-size: cover;
-  color:white;
-}
-
-/* NAVBAR */
-.navbar{
-  position:fixed;
-  top:10px;
-  left:50%;
-  transform:translateX(-50%);
-  width:95%;
-  padding:12px 20px;
-  border-radius:15px;
-  background:rgba(255,255,255,0.08);
-  backdrop-filter:blur(15px);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  z-index:1000;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.brand img{height:35px;}
-.brand-name{color:#38bdf8;font-weight:600;}
-
-.nav-links span{
-  margin-left:20px;
-  cursor:pointer;
-}
-.nav-links span:hover{color:#38bdf8;}
-
-/* PAGES */
-.page{
-  display:none;
-  min-height:100vh;
-  animation:fade .4s ease;
-}
-
-.active{display:block;}
-
-@keyframes fade{
-  from{opacity:0;transform:translateY(10px);}
-  to{opacity:1;transform:translateY(0);}
-}
-
-/* HOME */
-.banner{
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-.banner-box{
-  text-align:center;
-  padding:40px;
-  border-radius:25px;
-  background:rgba(255,255,255,0.05);
-  backdrop-filter:blur(20px);
-}
-
-.banner-logo{
-  height:80px;
-  margin-bottom:10px;
-}
-
-.banner-box h1{
-  font-size:40px;
-  background:linear-gradient(to right,#38bdf8,#818cf8);
-  -webkit-background-clip:text;
-  color:transparent;
-}
-
-/* BUTTON */
-.btn{
-  margin-top:15px;
-  padding:10px 22px;
-  border:none;
-  border-radius:12px;
-  background:linear-gradient(45deg,#38bdf8,#6366f1);
-  color:white;
-  cursor:pointer;
-}
-
-/* CARDS */
-.container{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:25px;
-  margin-top:120px;
-  padding:20px;
-}
-
-.card{
-  width:260px;
-  padding:25px;
-  border-radius:20px;
-  background:rgba(255,255,255,0.08);
-  text-align:center;
-  transition:.3s;
-}
-
-.card:hover{transform:translateY(-10px);}
-
-/* CONTACT */
-.contact-box{
-  width:90%;
-  max-width:500px;
-  margin:120px auto;
-  padding:30px;
-  border-radius:20px;
-  text-align:center;
-  background:rgba(255,255,255,0.08);
-}
-
-/* MOBILE */
-@media(max-width:600px){
-  .navbar{flex-direction:column;gap:10px;}
-  .banner-box h1{font-size:26px;}
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102a56">
+  <meta name="description" content="Edutech Technology — student resources, notices, results and education portals.">
+  <title>Edutech Technology | Student Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
 </head>
-
 <body>
-
-<!-- NAVBAR -->
-<div class="navbar">
-  <div class="brand">
-    <img src="https://i.ibb.co/PvHhQR46/file-0000000001b071f8b9f2c2ce7575a138.png">
-    <div class="brand-name">EduSetu</div>
-  </div>
-
-  <div class="nav-links">
-    <span onclick="showPage('home')">Home</span>
-    <span onclick="showPage('services')">Services</span>
-    <span onclick="showPage('join')">Join</span>
-    <span onclick="showPage('contact')">Contact</span>
-  </div>
-</div>
-
-<!-- HOME -->
-<div id="home" class="page active">
-  <div class="banner">
-    <div class="banner-box">
-      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png" class="banner-logo">
-      <h1>Syndicate.edu.in</h1>
-      <p>Your Smart Education Gateway</p>
-      <button class="btn" onclick="showPage('services')">Get Started</button>
+  <div class="announcement-bar">
+    <div class="container announcement-inner">
+      <span class="live-dot"></span>
+      <span>One place for learning resources, updates and student services</span>
+      <a href="#notices">Latest updates <span aria-hidden="true">↗</span></a>
     </div>
   </div>
-</div>
 
-<!-- SERVICES -->
-<div id="services" class="page">
-  <div class="container">
-
-    <div class="card">
-      <h3>CBSE Result</h3>
-      <button class="btn" onclick="openSite('https://results.cbse.nic.in')">View</button>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home" aria-label="Edutech Technology home">
+        <span class="brand-mark">E<span>+</span></span>
+        <span class="brand-copy"><strong>EDUTECH</strong><small>TECHNOLOGY</small></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+      <nav class="main-nav" id="mainNav">
+        <a class="active" href="#home">Home</a>
+        <a href="#resources">Study resources</a>
+        <a href="#results">Results</a>
+        <a href="#notices">Notices</a>
+        <a href="#portals">Portals</a>
+      </nav>
+      <a class="nav-cta" href="admin.html">Admin <span aria-hidden="true">↗</span></a>
     </div>
+  </header>
 
-    <div class="card">
-      <h3>CBSE Website</h3>
-      <button class="btn" onclick="openSite('https://www.cbse.gov.in')">Open</button>
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-grid"></div>
+      <div class="container hero-layout">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> YOUR LEARNING, ORGANIZED</div>
+          <h1>Move forward.<br><span>Learn with purpose.</span></h1>
+          <p class="hero-text">Study material, important announcements and student services — thoughtfully organized in one digital destination.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#resources">Explore resources <span>→</span></a>
+            <a class="button button-ghost" href="#results">Check result options</a>
+          </div>
+          <div class="hero-trust"><span class="trust-icon">✓</span><span>Simple access</span><i></i><span>Student-first design</span><i></i><span>Mobile friendly</span></div>
+        </div>
+        <div class="hero-visual" aria-label="Learning dashboard illustration">
+          <div class="visual-glow"></div>
+          <div class="visual-card visual-card-main">
+            <div class="visual-top"><span class="mini-logo">E+</span><span class="status-pill"><span></span> Learning hub</span></div>
+            <p class="visual-kicker">YOUR NEXT STEP</p>
+            <h3>Small progress.<br>Big possibilities.</h3>
+            <div class="progress-row"><span>Keep learning</span><strong>01 / 04</strong></div>
+            <div class="progress-track"><span></span></div>
+            <div class="visual-bottom"><span class="visual-book">▤</span><div><strong>Learning resources</strong><small>Notes, papers & updates</small></div><span class="arrow-circle">↗</span></div>
+          </div>
+          <div class="floating-note note-top"><span class="note-icon">✦</span><div><strong>Stay informed</strong><small>Notices in one place</small></div></div>
+          <div class="floating-note note-bottom"><span class="note-check">✓</span><div><strong>Built for students</strong><small>Clear. Focused. Useful.</small></div></div>
+          <div class="visual-orbit orbit-one"></div><div class="visual-orbit orbit-two"></div>
+        </div>
+      </div>
+      <div class="container hero-bottom">
+        <span>MADE FOR THE JOURNEY AHEAD</span><div class="hero-bottom-line"></div><span>EDUTECH TECHNOLOGY</span>
+      </div>
+    </section>
+
+    <section class="quick-links">
+      <div class="container quick-grid">
+        <a class="quick-item" href="#resources"><span class="quick-icon blue">▤</span><span><strong>Study material</strong><small>Notes and papers</small></span><b>↗</b></a>
+        <a class="quick-item" href="#results"><span class="quick-icon purple">▦</span><span><strong>Results</strong><small>Find the right result portal</small></span><b>↗</b></a>
+        <a class="quick-item" href="#notices"><span class="quick-icon orange">◷</span><span><strong>Notices</strong><small>Updates and announcements</small></span><b>↗</b></a>
+        <a class="quick-item" href="#portals"><span class="quick-icon green">◎</span><span><strong>Useful portals</strong><small>Quick access links</small></span><b>↗</b></a>
+      </div>
+    </section>
+
+    <section class="section section-light" id="resources">
+      <div class="container">
+        <div class="section-heading">
+          <div><div class="eyebrow"><span class="eyebrow-line"></span> LEARN & PREPARE</div><h2>Resources that keep<br><span>you moving.</span></h2></div>
+          <p>Find study support for your class without digging through multiple pages. Add your verified resource links when you're ready to publish.</p>
+        </div>
+        <div class="filter-row">
+          <div class="filter-label">Browse by class</div>
+          <div class="class-filters" role="group" aria-label="Filter resources by class">
+            <button class="filter-btn active" data-class="all">All classes</button>
+            <button class="filter-btn" data-class="9">Class 9</button>
+            <button class="filter-btn" data-class="10">Class 10</button>
+            <button class="filter-btn" data-class="11">Class 11</button>
+            <button class="filter-btn" data-class="12">Class 12</button>
+          </div>
+          <label class="search-box"><span>⌕</span><input id="resourceSearch" type="search" placeholder="Search resources..." aria-label="Search resources"></label>
+        </div>
+        <div class="resource-grid" id="resourceGrid">
+          <article class="resource-card" data-class="9,10" data-search="question papers exam practice">
+            <div class="resource-art art-blue"><span class="art-label">PRACTICE</span><div class="art-sheet"><i></i><i></i><i></i><i></i></div><span class="art-number">01</span></div>
+            <div class="resource-body"><div class="card-meta"><span>CLASS 9–10</span><span class="meta-dot"></span><span>EXAM PREP</span></div><h3>Question papers</h3><p>Practice with school and board-style papers.</p><a href="#portals" class="text-link">Explore papers <span>→</span></a></div>
+          </article>
+          <article class="resource-card" data-class="11,12" data-search="notes science maths physics chemistry computer science">
+            <div class="resource-art art-purple"><span class="art-label">STUDY</span><div class="art-book"><span></span><span></span><span></span></div><span class="art-number">02</span></div>
+            <div class="resource-body"><div class="card-meta"><span>CLASS 11–12</span><span class="meta-dot"></span><span>SUBJECTS</span></div><h3>Notes & revision</h3><p>Keep key concepts and revision material close.</p><a href="#portals" class="text-link">Explore notes <span>→</span></a></div>
+          </article>
+          <article class="resource-card" data-class="9,10,11,12" data-search="notices datesheet syllabus circular">
+            <div class="resource-art art-orange"><span class="art-label">UPDATES</span><div class="art-calendar"><b>OCT</b><strong>18</strong><i></i><i></i><i></i><i></i></div><span class="art-number">03</span></div>
+            <div class="resource-body"><div class="card-meta"><span>ALL CLASSES</span><span class="meta-dot"></span><span>UPDATES</span></div><h3>Datesheets & notices</h3><p>Stay aware of important dates and announcements.</p><a href="#notices" class="text-link">View notices <span>→</span></a></div>
+          </article>
+        </div>
+        <p class="section-footnote"><span class="footnote-star">✳</span> Resource cards are starter examples. Replace them with verified links before launch.</p>
+      </div>
+    </section>
+
+    <section class="results-section" id="results">
+      <div class="container results-layout">
+        <div class="results-copy">
+          <div class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> STUDENT RESULTS</div>
+          <h2>Your hard work<br>deserves <span>clarity.</span></h2>
+          <p>Use the official or authorized result portal provided by your school or education team. Student marks should never be published in a public spreadsheet or open webpage.</p>
+          <a class="button button-white" id="resultsLink" href="#" target="_blank" rel="noopener">Open result portal <span>↗</span></a>
+          <small class="results-hint" id="resultsHint">Result portal link needs to be configured in config.js.</small>
+        </div>
+        <div class="results-panel">
+          <div class="panel-header"><span class="panel-dot"></span><span>RESULTS DESK</span><span class="panel-menu">•••</span></div>
+          <div class="results-panel-inner">
+            <div class="result-icon">▦</div>
+            <h3>Find your result portal</h3>
+            <p>Choose the relevant class and exam on the authorized portal.</p>
+            <div class="result-steps"><div><b>01</b><span>Open the official link</span><i>✓</i></div><div><b>02</b><span>Follow its verification steps</span><i>✓</i></div><div><b>03</b><span>Check your marks securely</span><i>✓</i></div></div>
+            <div class="privacy-note"><span>◇</span><span><strong>Privacy first</strong><small>Marks are personal student information.</small></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-light" id="notices">
+      <div class="container">
+        <div class="section-heading notices-heading">
+          <div><div class="eyebrow"><span class="eyebrow-line"></span> WHAT'S NEW</div><h2>Important updates.<br><span>One clear view.</span></h2></div>
+          <p>Official notices and announcements can appear here once Firebase is configured and the admin account is authorized.</p>
+        </div>
+        <div id="noticeList" class="notice-list">
+          <article class="notice-item"><div class="notice-date"><strong>—</strong><span>UPDATE</span></div><div class="notice-content"><span class="notice-tag">WELCOME</span><h3>Welcome to Edutech Technology</h3><p>This is a sample notice. The admin can publish verified updates after Firebase setup.</p></div><span class="notice-arrow">↗</span></article>
+          <div class="notice-status" id="noticeStatus">Showing starter content. Live notices will load after Firebase setup.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section portals-section" id="portals">
+      <div class="container">
+        <div class="section-heading">
+          <div><div class="eyebrow"><span class="eyebrow-line"></span> QUICK ACCESS</div><h2>Your key portals,<br><span>within reach.</span></h2></div>
+          <p>Connect your main website with separate resource, result and information portals. Update destinations in one place.</p>
+        </div>
+        <div class="portal-grid">
+          <a class="portal-card" id="supportPortalLink" href="#" target="_blank" rel="noopener"><span class="portal-symbol portal-symbol-blue">▤</span><span class="portal-index">01 / LEARNING</span><h3>Study support</h3><p>Notes, question papers and revision resources.</p><span class="portal-action">Visit portal <b>↗</b></span></a>
+          <a class="portal-card" id="officialPortalLink" href="#" target="_blank" rel="noopener"><span class="portal-symbol portal-symbol-orange">◎</span><span class="portal-index">02 / INFORMATION</span><h3>Official information</h3><p>Education updates and verified information.</p><span class="portal-action">Visit portal <b>↗</b></span></a>
+          <a class="portal-card" id="resultsPortalCard" href="#" target="_blank" rel="noopener"><span class="portal-symbol portal-symbol-purple">▦</span><span class="portal-index">03 / RESULTS</span><h3>Results portal</h3><p>Go to the authorized results service.</p><span class="portal-action">Visit portal <b>↗</b></span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing-cta">
+      <div class="container closing-inner"><div><div class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> BUILT TO GROW</div><h2>A better organized<br>way to <span>move ahead.</span></h2></div><a href="#home" class="button button-white">Back to top <span>↑</span></a></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-main">
+      <a class="brand brand-footer" href="#home"><span class="brand-mark">E<span>+</span></span><span class="brand-copy"><strong>EDUTECH</strong><small>TECHNOLOGY</small></span></a>
+      <p>Learning resources and student information, organized with care.</p>
+      <div class="footer-links"><a href="#resources">Resources</a><a href="#results">Results</a><a href="#notices">Notices</a><a href="admin.html">Admin</a></div>
     </div>
-
-    <div class="card">
-      <h3>Edudel</h3>
-      <button class="btn" onclick="openSite('https://www.edudel.nic.in')">Open</button>
-    </div>
-
-    <div class="card">
-      <h3>Join Group</h3>
-      <p style="color:#94a3b8;font-size:13px;margin-top:5px;">
-        Fill form to join group
-      </p>
-      <button class="btn" onclick="openSite('https://syndicate-india.github.io/Registration-system/')">
-        Join Form
-      </button>
-    </div>
-
-  </div>
-</div>
-
-<!-- JOIN -->
-<div id="join" class="page">
-  <div class="container">
-
-    <div class="card">
-      <h3>Join Group</h3>
-      <p style="color:#94a3b8;font-size:13px;margin-top:5px;">
-        Fill form to join group
-      </p>
-      <button class="btn" onclick="openSite('https://syndicate-india.github.io/Registration-system/')">
-        Join Form
-      </button>
-    </div>
-
-  </div>
-</div>
-
-<!-- CONTACT -->
-<div id="contact" class="page">
-  <div class="contact-box">
-    <h2>Contact Us</h2>
-    <p style="color:#94a3b8;margin-top:10px;">
-      Any issue related to studies? Contact us anytime.
-    </p>
-
-    <button class="btn" onclick="openSite('https://docs.google.com/forms/d/e/1FAIpQLSfR7J9HIt4J-EfVPVlWet4OBbla45pAzMj9J2NfJOe9YjMfUw/viewform?usp=header')">
-      Submit Issue
-    </button>
-  </div>
-</div>
-
-<script>
-function showPage(id){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-}
-
-function openSite(url){
-  window.open(url,'_blank');
-}
-</script>
-
+    <div class="container footer-bottom"><span>© <span id="year"></span> Edutech Technology</span><span>Learn. Prepare. Progress.</span></div>
+  </footer>
 </body>
 </html>
